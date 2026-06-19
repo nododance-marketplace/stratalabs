@@ -1,0 +1,50 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(node scripts/make-logo.mjs)",
+      "Bash(npm install *)",
+      "Bash(npx next *)",
+      "Bash(npm run *)",
+      "Read(//d/Downloads/Strata Labs/**)",
+      "Bash(node -e ' *)",
+      "Bash(mkdir -p Website/public/brand)",
+      "Bash(cp \"Logo/Strata Labs logo.png\" \"Website/public/logo.png\")",
+      "Bash(cp Logo/variants/emblem_flat2d.png Website/public/brand/emblem.png)",
+      "Bash(cp Logo/variants/emblem_full.png Website/public/brand/emblem-3d.png)",
+      "Bash(cp Logo/variants/emblem_cyan.png Website/public/brand/emblem-cyan.png)",
+      "Bash(rm -f src/components/brand/StrataEmblem.tsx scripts/make-logo.mjs)",
+      "Bash(rmdir src/components/brand)",
+      "Bash(rmdir scripts *)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(grep -o '/brand/emblem[^\"\\\\\\\\]*')",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{content_type}\\\\n\" http://localhost:3000/brand/emblem.png)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/icon.png)",
+      "Bash(curl -s -o /dev/null -w \"home %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"favicon %{http_code}\\\\n\" http://localhost:3000/icon.png)",
+      "Bash(curl -s -o /dev/null -w \"emblem %{http_code}\\\\n\" http://localhost:3000/brand/emblem.png)",
+      "Bash(curl -s -o /dev/null -w \"logo %{http_code}\\\\n\" http://localhost:3000/logo.png)",
+      "Bash(curl -s -o /dev/null -w \"home retry %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(mkdir -p public/products)",
+      "Bash(node -e \"try{require.resolve\\('sharp'\\);console.log\\('sharp: AVAILABLE'\\)}catch{console.log\\('sharp: not installed'\\)}; try{require.resolve\\('pngjs'\\);console.log\\('pngjs: AVAILABLE'\\)}catch{console.log\\('pngjs: not installed'\\)}\")",
+      "Bash(node scripts/knockout-wordmark.mjs)",
+      "Bash(curl -s --max-time 40 http://localhost:3030/)",
+      "Bash(echo \"home refs wordmark: $\\(curl -s --max-time 40 http://localhost:3030/)",
+      "Bash(rm -f public/products/*.png)",
+      "Bash(cp \"../Products/01_DeskFab_X1/SL 3DMPDESK.png\" public/products/sl-3dmpdesk.png)",
+      "Bash(cp \"../Products/02_FF-M140/SL 3DMP140.png\"      public/products/sl-3dmp140.png)",
+      "Bash(cp \"../Products/03_FF-M220/SL 3DMP220.png\"      public/products/sl-3dmp220.png)",
+      "Bash(cp \"../Products/04_FF-M300/SL 3DMP300.png\"      public/products/sl-3dmp300.png)",
+      "Bash(sort -k6)",
+      "Bash(node scripts/recolor-emblem.mjs)",
+      "Bash(cd \"d:/Downloads/Strata Labs/Website\" && mkdir -p public/video && cp \"../Videos/Header Video.mp4\" public/video/header.mp4 && ls -la public/video/)",
+      "Bash(echo \"home refs video: $\\(curl -s --max-time 40 http://localhost:3030/)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m ' *)"
+    ],
+    "additionalDirectories": [
+      "d:\\Downloads\\Strata Labs\\Videos"
+    ]
+  }
+}
