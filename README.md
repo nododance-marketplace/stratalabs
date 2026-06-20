@@ -133,22 +133,49 @@ file in `public/brand/`.
 
 ---
 
-## Cart & forms (current behavior + TODOs)
+## Payments (Stripe Checkout)
 
-This is a front-end-only build. A few spots are intentionally stubbed:
+Online payment is wired up with **Stripe Checkout**. The cart redirects to
+Stripe's hosted checkout page; **prices are read server-side from
+`products.ts` by slug**, so the amount charged can never be tampered with from
+the browser.
 
-- **Cart** — a lightweight inquiry cart (React Context + `localStorage`) in
-  [`src/components/cart/CartContext.tsx`](src/components/cart/CartContext.tsx).
-  "Add to Cart" builds a quote-request list. **No payments yet.**
-  - **TODO (Stripe):** the **Request Quote** button in
-    [`CartDrawer.tsx`](src/components/cart/CartDrawer.tsx) currently
-    `console.log`s the list. Wire it to a Stripe Checkout Session or your CRM.
-- **Contact form** — [`ContactForm.tsx`](src/components/contact/ContactForm.tsx)
-  validates input and `console.log`s the submission.
-  - **TODO (email):** connect it to a Route Handler (`app/api/contact/route.ts`)
-    using Resend/SendGrid, or a service like Formspree.
+**Files:**
+- [`src/app/api/checkout/route.ts`](src/app/api/checkout/route.ts) — creates the
+  Checkout Session from the cart.
+- [`src/app/api/stripe/webhook/route.ts`](src/app/api/stripe/webhook/route.ts) —
+  receives `checkout.session.completed` (has a `TODO` for order fulfilment/email).
+- [`src/app/checkout/success/page.tsx`](src/app/checkout/success/page.tsx) —
+  post-payment confirmation (clears the cart).
 
-Search the codebase for `TODO` to find every spot that needs wiring.
+**Setup:**
+1. Copy [`.env.local.example`](.env.local.example) to `.env.local` and add your
+   keys from <https://dashboard.stripe.com/apikeys> (use **test** keys first):
+   ```
+   STRIPE_SECRET_KEY=sk_test_...
+   NEXT_PUBLIC_SITE_URL=http://localhost:3030
+   ```
+2. Set real **prices** in [`src/data/products.ts`](src/data/products.ts) —
+   each product's `priceCents` is in US cents (e.g. `5_900_000` = `$59,000`).
+   The current values are **placeholders**. Set `priceCents: null` to make a
+   product "Contact for pricing" (excluded from checkout).
+3. `npm run dev`, add a machine to the cart, click **Checkout**, and pay with
+   the Stripe test card `4242 4242 4242 4242` (any future expiry / any CVC).
+4. **Going live:** swap to live keys in your host's env vars, set
+   `NEXT_PUBLIC_SITE_URL` to your domain, and (recommended) add a webhook in the
+   Stripe Dashboard pointing at `https://your-domain/api/stripe/webhook` with
+   the signing secret in `STRIPE_WEBHOOK_SECRET`.
+
+> Tip: for large B2B amounts, enable **ACH / US bank debit** in your Stripe
+> Dashboard (Settings → Payment methods). Checkout will show it automatically,
+> and fees are far lower than card for big-ticket orders.
+
+## Contact form (TODO)
+
+[`ContactForm.tsx`](src/components/contact/ContactForm.tsx) validates input and
+`console.log`s the submission.
+- **TODO (email):** connect it to a Route Handler (`app/api/contact/route.ts`)
+  using Resend/SendGrid, or a service like Formspree.
 
 ---
 

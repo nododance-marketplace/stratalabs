@@ -89,7 +89,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setCartOpen(true)}
-              aria-label={`Open inquiry cart, ${count} item${count === 1 ? "" : "s"}`}
+              aria-label={`Open cart, ${count} item${count === 1 ? "" : "s"}`}
               className="relative rounded-full p-2.5 text-titanium transition-colors hover:bg-white/5"
             >
               <CartIcon />

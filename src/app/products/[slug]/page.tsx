@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProductBySlug, products, CATEGORY_META } from "@/data/products";
+import { getProductBySlug, products, CATEGORY_META, formatPrice } from "@/data/products";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { CategoryBadge } from "@/components/product/CategoryBadge";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
@@ -66,13 +66,13 @@ export default function ProductDetailPage({ params }: PageProps) {
 
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
             <span className="font-heading text-2xl text-white">
-              {product.price}
+              {formatPrice(product.priceCents)}
             </span>
             <AddToCartButton product={product} />
           </div>
           <p className="mt-3 text-xs text-steel">
-            No payment is taken — this adds the machine to your inquiry list for
-            a US-based quote.
+            Secure checkout powered by Stripe. Need volume pricing, financing, or
+            freight details? <a href="/contact" className="text-accent hover:text-accent-signal">Contact our US-based team</a>.
           </p>
 
           {/* Key highlights */}

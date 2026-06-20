@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Product } from "@/lib/types";
+import { formatPrice } from "@/data/products";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { CategoryBadge } from "./CategoryBadge";
 import { ArrowRightIcon } from "@/components/ui/icons";
@@ -37,7 +38,7 @@ export function ProductCard({ product }: { product: Product }) {
         </p>
 
         <div className="mt-auto flex items-center justify-between pt-4">
-          <span className="text-sm text-titanium">{product.price}</span>
+          <span className="text-sm text-titanium">{formatPrice(product.priceCents)}</span>
           <Link
             href={`/products/${product.slug}`}
             className="inline-flex items-center gap-1.5 text-sm text-accent transition-colors hover:text-accent-signal"

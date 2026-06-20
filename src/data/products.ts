@@ -48,7 +48,7 @@ export const products: Product[] = [
     name: "SL 3DMPDESK",
     category: "Desktop",
     specLine: "Ø100 × 70 mm build · 300 W fiber laser · CoCr & titanium",
-    price: "Contact for pricing",
+    priceCents: null, // Awaiting vendor price + markup. Set cents to enable checkout (e.g. 5_900_000 = $59,000).
     description:
       "An all-in-one true desktop SLM metal printer built for dental labs and small-batch metal work. Compact 0.39 m² footprint, AI one-click printing, and a maintenance-free permanent filter make it the easiest entry point into in-house metal additive manufacturing.",
     highlights: [
@@ -97,7 +97,7 @@ export const products: Product[] = [
     name: "SL 3DMP140",
     category: "Dental",
     specLine: "Ø140 × 170 mm build · 500 W laser · ~150 teeth per run",
-    price: "Contact for pricing",
+    priceCents: null, // Awaiting vendor price + markup. Set cents to enable checkout (e.g. 9_500_000 = $95,000).
     description:
       "A specialized single-laser SLM dental metal printer with a Ø140 mm build and one-click dental typesetting. Built for precise, customized dental components with high throughput.",
     highlights: [
@@ -145,7 +145,7 @@ export const products: Product[] = [
     name: "SL 3DMP220",
     category: "Dental",
     specLine: "220 × 140 × 100 mm · dual 500 W lasers · 300 crowns/run",
-    price: "Contact for pricing",
+    priceCents: null, // Awaiting vendor price + markup. Set cents to enable checkout (e.g. 14_500_000 = $145,000).
     description:
       "A dual-laser SLM metal printer with a large build volume — print up to 300 crowns or 30 frameworks in a single run. Permanent filter, LFPT efficiency tech, and free-forever in-house software.",
     highlights: [
@@ -197,7 +197,7 @@ export const products: Product[] = [
     name: "SL 3DMP300",
     category: "Industrial",
     specLine: "Large-format SLM · steel, nickel, titanium & aluminum alloys",
-    price: "Contact for pricing",
+    priceCents: null, // Awaiting vendor price + markup. Set cents to enable checkout (e.g. 21_900_000 = $219,000).
     description:
       "A large-format SLM metal printer for industrial molds, tooling and high-volume dental work. Bidirectional powder spreading and one-click typesetting for fast, stable mass production.",
     highlights: [
@@ -232,7 +232,7 @@ export const products: Product[] = [
     name: "SL 3DMP420",
     category: "Industrial",
     specLine: "Super-large multi-laser SLM · powder circulation system",
-    price: "Contact for pricing",
+    priceCents: null, // Awaiting vendor price + markup. Set cents to enable checkout (e.g. 31_900_000 = $319,000).
     description:
       "The flagship super-large-format multi-laser SLM metal printer, built for serious mass production with a powder circulation system for high-volume runs.",
     highlights: [
@@ -267,6 +267,16 @@ export const products: Product[] = [
     featured: true,
   },
 ];
+
+/** Format a price in cents as USD, e.g. 5900000 → "$59,000". */
+export function formatPrice(priceCents: number | null): string {
+  if (priceCents == null) return "Contact for pricing";
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(priceCents / 100);
+}
 
 /** Look up a single product by its slug. Returns undefined if not found. */
 export function getProductBySlug(slug: string): Product | undefined {

@@ -35,12 +35,12 @@ export function AddToCartButton({ product, className = "" }: AddToCartButtonProp
       {added ? (
         <>
           <CheckIcon className="h-4 w-4" />
-          Added to inquiry
+          Added to cart
         </>
       ) : (
         <>
           <PlusIcon className="h-4 w-4 transition-transform group-hover:rotate-90" />
-          Inquire / Add to Cart
+          Add to Cart
         </>
       )}
     </button>

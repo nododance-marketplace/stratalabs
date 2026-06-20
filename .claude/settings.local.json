@@ -41,7 +41,17 @@
       "Bash(echo \"home refs video: $\\(curl -s --max-time 40 http://localhost:3030/)",
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git commit -q -m ' *)"
+      "Bash(git commit -q -m ' *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(git ls-remote *)",
+      "Bash(node -e \"console.log\\('stripe', require\\('stripe/package.json'\\).version\\)\")",
+      "Bash(node -e \"const S=require\\('stripe'\\); console.log\\('stripe SDK loads OK, VERSION:', S.PACKAGE_VERSION || 'n/a'\\)\")",
+      "PowerShell($c = Get-NetTCPConnection -LocalPort 3030 -State Listen -ErrorAction SilentlyContinue; if \\($c\\) { $c | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }; Write-Output \"freed 3030\" } else { Write-Output \"3030 free\" })",
+      "Bash(curl -s --max-time 40 http://localhost:3030/shop)",
+      "Bash(grep -oE '\\\\$[0-9]{2,3},[0-9]{3}')",
+      "Bash(curl -s --max-time 40 -X POST http://localhost:3030/api/checkout -H \"Content-Type: application/json\" -d '{\"items\":[{\"slug\":\"sl-3dmpdesk\",\"quantity\":1}]}')",
+      "Bash(curl -s --max-time 40 -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3030/checkout/success)"
     ],
     "additionalDirectories": [
       "d:\\Downloads\\Strata Labs\\Videos"

@@ -23,7 +23,7 @@ export interface CartItem {
   slug: string;
   name: string;
   category: string;
-  price: string;
+  priceCents: number | null;
   quantity: number;
 }
 
@@ -60,7 +60,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
             slug: action.product.slug,
             name: action.product.name,
             category: action.product.category,
-            price: action.product.price,
+            priceCents: action.product.priceCents,
             quantity: 1,
           },
         ],
@@ -90,6 +90,10 @@ function cartReducer(state: CartState, action: CartAction): CartState {
 interface CartContextValue {
   items: CartItem[];
   count: number;
+  /** Sum of (priceCents × qty) for items that have a price. */
+  subtotalCents: number;
+  /** True if any item has no online price (must be quoted, not checked out). */
+  hasQuoteOnly: boolean;
   add: (product: Product) => void;
   remove: (slug: string) => void;
   setQty: (slug: string, quantity: number) => void;
@@ -133,7 +137,21 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<CartContextValue>(() => {
     const count = state.items.reduce((sum, i) => sum + i.quantity, 0);
-    return { items: state.items, count, add, remove, setQty, clear };
+    const subtotalCents = state.items.reduce(
+      (sum, i) => sum + (i.priceCents ?? 0) * i.quantity,
+      0,
+    );
+    const hasQuoteOnly = state.items.some((i) => i.priceCents == null);
+    return {
+      items: state.items,
+      count,
+      subtotalCents,
+      hasQuoteOnly,
+      add,
+      remove,
+      setQty,
+      clear,
+    };
   }, [state.items, add, remove, setQty, clear]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

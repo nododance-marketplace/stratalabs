@@ -16,8 +16,13 @@ export interface Product {
   category: Category;
   /** One-line spec summary shown on cards. */
   specLine: string;
-  /** Displayed price. Placeholder until supplier pricing is finalized. */
-  price: string;
+  /**
+   * Price in US cents (e.g. 5900000 = $59,000). Used for display AND as the
+   * authoritative amount charged at Stripe Checkout (the server re-reads this
+   * by slug, so the client can never tamper with the price).
+   * Set to null/omit to show "Contact for pricing" and disable online payment.
+   */
+  priceCents: number | null;
   /** Short marketing description shown on the product detail page. */
   description: string;
   /** Bullet highlights shown on the product detail page (optional). */

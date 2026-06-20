@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useCart } from "./CartContext";
+import { formatPrice } from "@/data/products";
 import { CloseIcon, MinusIcon, PlusIcon, CartIcon } from "@/components/ui/icons";
 
 interface CartDrawerProps {
@@ -11,14 +12,15 @@ interface CartDrawerProps {
 }
 
 /**
- * Slide-in inquiry cart. Lists requested printers and a "Request Quote"
- * action. There is NO checkout/payment yet.
- *
- * TODO (Stripe): replace the "Request Quote" handler below with a call to
- * create a Stripe Checkout Session (or route the list to your CRM/email).
+ * Slide-in cart. Lists items and starts Stripe Checkout. Items without an
+ * online price ("Contact for pricing") are excluded from the charge and the
+ * shopper is pointed to Contact for a quote.
  */
 export function CartDrawer({ open, onClose }: CartDrawerProps) {
-  const { items, count, setQty, remove, clear } = useCart();
+  const { items, count, subtotalCents, hasQuoteOnly, setQty, remove, clear } =
+    useCart();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   // Lock body scroll + close on Escape while open.
   useEffect(() => {
@@ -32,12 +34,26 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
     };
   }, [open, onClose]);
 
-  function handleRequestQuote() {
-    // TODO (email/Stripe): wire this up. For now, log the inquiry list.
-    console.log("[Strata Labs] Quote requested for:", items);
-    alert(
-      "Thanks — your inquiry list is logged to the console for now.\nWiring this to email/Stripe is a TODO.",
-    );
+  async function handleCheckout() {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: items.map((i) => ({ slug: i.slug, quantity: i.quantity })),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.url) {
+        throw new Error(data.error || "Could not start checkout.");
+      }
+      window.location.href = data.url; // redirect to Stripe Checkout
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Could not start checkout.");
+      setLoading(false);
+    }
   }
 
   return (
@@ -55,14 +71,14 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
       <aside
         role="dialog"
         aria-modal="true"
-        aria-label="Inquiry cart"
+        aria-label="Shopping cart"
         className={`fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col glass transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <header className="flex items-center justify-between px-6 py-5 hairline border-t-0 border-b border-white/[0.08]">
           <h2 className="font-heading text-lg tracking-tight text-white">
-            Your Inquiry
+            Your Cart
             <span className="ml-2 text-sm font-normal text-steel">
               ({count})
             </span>
@@ -83,9 +99,7 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
             <div className="rounded-full border border-white/10 p-5 text-steel">
               <CartIcon className="h-7 w-7" />
             </div>
-            <p className="text-sm text-steel">
-              Your inquiry list is empty.
-            </p>
+            <p className="text-sm text-steel">Your cart is empty.</p>
             <Link
               href="/shop"
               onClick={onClose}
@@ -110,7 +124,9 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
                     >
                       {item.name}
                     </Link>
-                    <p className="mt-1 text-xs text-steel">{item.price}</p>
+                    <p className="mt-1 text-xs text-steel">
+                      {formatPrice(item.priceCents)}
+                    </p>
                   </div>
                   <div className="flex flex-col items-end justify-between">
                     <button
@@ -147,23 +163,51 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
             </ul>
 
             <footer className="space-y-3 border-t border-white/[0.08] px-6 py-5">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-steel">Subtotal</span>
+                <span className="font-heading text-lg text-white">
+                  {formatPrice(subtotalCents)}
+                </span>
+              </div>
               <p className="text-xs text-steel">
-                Pricing is provided per quote. Submit your list and US-based
-                support will follow up.
+                Taxes, freight &amp; installation calculated separately. Secure
+                checkout powered by Stripe.
               </p>
+
+              {hasQuoteOnly && (
+                <p className="rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2 text-xs text-steel">
+                  Some items are quote-only and won&apos;t be charged.{" "}
+                  <Link
+                    href="/contact"
+                    onClick={onClose}
+                    className="text-accent hover:text-accent-signal"
+                  >
+                    Contact us
+                  </Link>{" "}
+                  for those.
+                </p>
+              )}
+
+              {error && (
+                <p className="rounded-lg border border-red-400/40 bg-red-400/5 px-3 py-2 text-xs text-red-400">
+                  {error}
+                </p>
+              )}
+
               <button
                 type="button"
-                onClick={handleRequestQuote}
-                className="btn-spark w-full py-3.5 text-sm"
+                onClick={handleCheckout}
+                disabled={loading || subtotalCents === 0}
+                className="btn-spark w-full py-3.5 text-sm disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Request Quote
+                {loading ? "Redirecting to checkout…" : "Checkout"}
               </button>
               <button
                 type="button"
                 onClick={clear}
                 className="w-full text-xs text-steel underline-offset-4 hover:text-white hover:underline"
               >
-                Clear list
+                Clear cart
               </button>
             </footer>
           </>
