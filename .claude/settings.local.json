@@ -52,7 +52,14 @@
       "Bash(grep -oE '\\\\$[0-9]{2,3},[0-9]{3}')",
       "Bash(curl -s --max-time 40 -X POST http://localhost:3030/api/checkout -H \"Content-Type: application/json\" -d '{\"items\":[{\"slug\":\"sl-3dmpdesk\",\"quantity\":1}]}')",
       "Bash(curl -s --max-time 40 -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3030/checkout/success)",
-      "PowerShell($c = Get-NetTCPConnection -LocalPort 3030 -State Listen -ErrorAction SilentlyContinue; if \\($c\\) { $c | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force } }; Write-Output \"3030 ready\")"
+      "PowerShell($c = Get-NetTCPConnection -LocalPort 3030 -State Listen -ErrorAction SilentlyContinue; if \\($c\\) { $c | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force } }; Write-Output \"3030 ready\")",
+      "Bash(curl -s --max-time 40 http://localhost:3030/products/sl-3dmpdesk)",
+      "Bash(grep -oE '\\\\$33,000|Add to Cart')",
+      "Bash(curl -s --max-time 40 http://localhost:3030/products/sl-3dmp220)",
+      "Bash(grep -oE '\\\\$33,000|Talk to sales|Get a quote')",
+      "PowerShell($c = Get-NetTCPConnection -LocalPort 3030 -State Listen -ErrorAction SilentlyContinue; if \\($c\\) { $c | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }; Write-Output \"killed orphan\" } else { Write-Output \"free\" })",
+      "Bash(curl -s --max-time 50 http://localhost:3030/products/sl-3dmpdesk)",
+      "Bash(curl -s --max-time 50 http://localhost:3030/products/sl-3dmp220)"
     ],
     "additionalDirectories": [
       "d:\\Downloads\\Strata Labs\\Videos"

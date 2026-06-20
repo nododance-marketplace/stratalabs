@@ -40,6 +40,19 @@ export const CATEGORY_META: Record<
     blurb:
       "Large- and super-large-format SLM for molds, tooling, and serious mass production.",
   },
+  SLS: {
+    label: "SLS",
+    blurb:
+      "Selective Laser Sintering — strong, support-free nylon and composite parts.",
+  },
+  Resin: {
+    label: "Resin",
+    blurb: "SLA / DLP resin — ultra-fine detail and smooth surface finish.",
+  },
+  "Large-Format FDM": {
+    label: "Large-Format FDM",
+    blurb: "Industrial FDM at large build volumes for tooling and prototypes.",
+  },
 };
 
 export const products: Product[] = [
@@ -266,6 +279,46 @@ export const products: Product[] = [
     images: ["/products/sl-3dmp420.png"],
     featured: true,
   },
+
+  // ─── COMING SOON ─────────────────────────────────────────────────────────
+  // Placeholders for inventory being sourced. They show in the shop's
+  // "Coming soon" section (no price, no checkout, no detail page). When a real
+  // machine lands: fill in specLine/description/specs/images, set priceCents
+  // (or leave null for "Talk to Sales"), add the category to CATEGORIES if you
+  // want it filterable, and delete `comingSoon: true`.
+  {
+    slug: "sls-coming-soon",
+    name: "SLS Nylon Printer",
+    category: "SLS",
+    specLine: "Selective Laser Sintering · nylon & composite parts",
+    priceCents: null,
+    description: "Specs and pricing coming soon.",
+    specs: [],
+    images: [],
+    comingSoon: true,
+  },
+  {
+    slug: "resin-coming-soon",
+    name: "Resin Printer",
+    category: "Resin",
+    specLine: "SLA / DLP resin · ultra-fine detail & smooth finish",
+    priceCents: null,
+    description: "Specs and pricing coming soon.",
+    specs: [],
+    images: [],
+    comingSoon: true,
+  },
+  {
+    slug: "large-format-fdm-coming-soon",
+    name: "Large-Format FDM Printer",
+    category: "Large-Format FDM",
+    specLine: "Industrial FDM · large build volumes",
+    priceCents: null,
+    description: "Specs and pricing coming soon.",
+    specs: [],
+    images: [],
+    comingSoon: true,
+  },
 ];
 
 /** Format a price in cents as USD, e.g. 5900000 → "$59,000". */
@@ -283,7 +336,17 @@ export function getProductBySlug(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
 }
 
-/** Products flagged for the homepage featured grid. */
+/** Buyable / available products (excludes coming-soon placeholders). */
+export function getAvailableProducts(): Product[] {
+  return products.filter((p) => !p.comingSoon);
+}
+
+/** Upcoming inventory placeholders. */
+export function getComingSoonProducts(): Product[] {
+  return products.filter((p) => p.comingSoon);
+}
+
+/** Products flagged for the homepage featured grid (never coming-soon). */
 export function getFeaturedProducts(): Product[] {
-  return products.filter((p) => p.featured);
+  return products.filter((p) => p.featured && !p.comingSoon);
 }

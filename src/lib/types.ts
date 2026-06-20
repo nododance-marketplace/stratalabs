@@ -1,8 +1,14 @@
 // Shared domain types for the Strata Labs storefront.
 
-// All current machines are SLM (metal). We filter the shop by use-case
-// segment, which is more useful to buyers than the (single) process type.
-export type Category = "Desktop" | "Dental" | "Industrial";
+// Buyable machines (all SLM metal) are filtered by use-case segment. The
+// process types below are reserved for upcoming "coming soon" inventory.
+export type Category =
+  | "Desktop"
+  | "Dental"
+  | "Industrial"
+  | "SLS"
+  | "Resin"
+  | "Large-Format FDM";
 
 export interface SpecField {
   label: string;
@@ -36,4 +42,11 @@ export interface Product {
   images: string[];
   /** Surface this product in the homepage "Featured" grid. */
   featured?: boolean;
+  /**
+   * Upcoming inventory placeholder. Shown in the shop's "Coming soon" section
+   * with no price and a "Register interest" CTA (not purchasable, no detail
+   * page). When the real machine arrives: fill in specs/description/images,
+   * set priceCents (or leave null for "Talk to Sales"), and remove this flag.
+   */
+  comingSoon?: boolean;
 }

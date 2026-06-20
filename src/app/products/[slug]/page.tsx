@@ -11,9 +11,9 @@ interface PageProps {
   params: { slug: string };
 }
 
-// Pre-render every product page at build time.
+// Pre-render every (available) product page at build time.
 export function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
+  return products.filter((p) => !p.comingSoon).map((p) => ({ slug: p.slug }));
 }
 
 export function generateMetadata({ params }: PageProps): Metadata {
@@ -27,10 +27,15 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
 export default function ProductDetailPage({ params }: PageProps) {
   const product = getProductBySlug(params.slug);
-  if (!product) notFound();
+  if (!product || product.comingSoon) notFound();
 
   const related = products
-    .filter((p) => p.category === product.category && p.slug !== product.slug)
+    .filter(
+      (p) =>
+        p.category === product.category &&
+        p.slug !== product.slug &&
+        !p.comingSoon,
+    )
     .slice(0, 3);
 
   return (

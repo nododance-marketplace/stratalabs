@@ -4,6 +4,9 @@ const STYLES: Record<Category, string> = {
   Desktop: "border-steel/50 text-steel",
   Dental: "border-accent/40 text-accent-ember",
   Industrial: "border-titanium/40 text-titanium",
+  SLS: "border-steel/50 text-steel",
+  Resin: "border-steel/50 text-steel",
+  "Large-Format FDM": "border-steel/50 text-steel",
 };
 
 export function CategoryBadge({ category }: { category: Category }) {
