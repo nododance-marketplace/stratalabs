@@ -64,16 +64,43 @@ export default function ProductDetailPage({ params }: PageProps) {
             {product.description}
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <span className="font-heading text-2xl text-white">
-              {formatPrice(product.priceCents)}
-            </span>
-            <AddToCartButton product={product} />
-          </div>
-          <p className="mt-3 text-xs text-steel">
-            Secure checkout powered by Stripe. Need volume pricing, financing, or
-            freight details? <a href="/contact" className="text-accent hover:text-accent-signal">Contact our US-based team</a>.
-          </p>
+          {product.priceCents != null ? (
+            <>
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+                <span className="font-heading text-2xl text-white">
+                  {formatPrice(product.priceCents)}
+                </span>
+                <AddToCartButton product={product} />
+              </div>
+              <p className="mt-3 text-xs text-steel">
+                Secure checkout powered by Stripe. Need volume pricing,
+                financing, or freight details?{" "}
+                <Link
+                  href="/contact"
+                  className="text-accent hover:text-accent-signal"
+                >
+                  Contact our US-based team
+                </Link>
+                .
+              </p>
+            </>
+          ) : (
+            <>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <span className="text-sm uppercase tracking-[0.2em] text-steel">
+                  Pricing on request
+                </span>
+                <Link href="/contact" className="btn-spark group px-7 py-3.5 text-sm">
+                  Talk to Sales
+                  <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+              <p className="mt-3 text-xs text-steel">
+                This machine is configured to order. Our US-based team will
+                prepare a quote with freight and installation included.
+              </p>
+            </>
+          )}
 
           {/* Key highlights */}
           {product.highlights && product.highlights.length > 0 && (

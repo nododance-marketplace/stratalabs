@@ -38,12 +38,18 @@ export function ProductCard({ product }: { product: Product }) {
         </p>
 
         <div className="mt-auto flex items-center justify-between pt-4">
-          <span className="text-sm text-titanium">{formatPrice(product.priceCents)}</span>
+          {product.priceCents != null ? (
+            <span className="text-sm text-titanium">
+              {formatPrice(product.priceCents)}
+            </span>
+          ) : (
+            <span className="text-sm text-steel">Talk to sales</span>
+          )}
           <Link
             href={`/products/${product.slug}`}
             className="inline-flex items-center gap-1.5 text-sm text-accent transition-colors hover:text-accent-signal"
           >
-            View Details
+            {product.priceCents != null ? "View Details" : "Get a quote"}
             <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>

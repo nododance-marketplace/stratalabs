@@ -48,7 +48,7 @@ export const products: Product[] = [
     name: "SL 3DMPDESK",
     category: "Desktop",
     specLine: "Ø100 × 70 mm build · 300 W fiber laser · CoCr & titanium",
-    priceCents: null, // Awaiting vendor price + markup. Set cents to enable checkout (e.g. 5_900_000 = $59,000).
+    priceCents: 3_300_000, // $33,000 — live for online checkout.
     description:
       "An all-in-one true desktop SLM metal printer built for dental labs and small-batch metal work. Compact 0.39 m² footprint, AI one-click printing, and a maintenance-free permanent filter make it the easiest entry point into in-house metal additive manufacturing.",
     highlights: [
