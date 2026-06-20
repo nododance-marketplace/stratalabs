@@ -103,6 +103,7 @@ export const products: Product[] = [
       { label: "Protective Gas", value: "Nitrogen / Argon ≤1 L/h" },
     ],
     images: ["/products/sl-3dmpdesk.png"],
+    datasheet: "/docs/sl-3dmpdesk.pdf",
     featured: true,
   },
   {

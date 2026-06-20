@@ -40,6 +40,11 @@ export interface Product {
    * (e.g. "/products/slm-1.jpg"). Empty array renders a styled placeholder.
    */
   images: string[];
+  /**
+   * Optional downloadable spec sheet / brochure (path under /public, e.g.
+   * "/docs/sl-3dmpdesk.pdf"). Shows a "Download spec sheet" button when set.
+   */
+  datasheet?: string;
   /** Surface this product in the homepage "Featured" grid. */
   featured?: boolean;
   /**

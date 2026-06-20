@@ -59,10 +59,17 @@
       "Bash(grep -oE '\\\\$33,000|Talk to sales|Get a quote')",
       "PowerShell($c = Get-NetTCPConnection -LocalPort 3030 -State Listen -ErrorAction SilentlyContinue; if \\($c\\) { $c | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }; Write-Output \"killed orphan\" } else { Write-Output \"free\" })",
       "Bash(curl -s --max-time 50 http://localhost:3030/products/sl-3dmpdesk)",
-      "Bash(curl -s --max-time 50 http://localhost:3030/products/sl-3dmp220)"
+      "Bash(curl -s --max-time 50 http://localhost:3030/products/sl-3dmp220)",
+      "Bash(curl -s --max-time 50 http://localhost:3030/shop)",
+      "Bash(curl -s --max-time 50 -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3030/products/sls-coming-soon)",
+      "Bash(curl -s --max-time 60 -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3030/)",
+      "Bash(curl -s --max-time 60 http://localhost:3030/)",
+      "Bash(curl -s --max-time 30 \"http://localhost:3030/_next/static/css/app/layout.css\")",
+      "Bash(cd \"d:/Downloads/Strata Labs/Website\" && mkdir -p public/docs && cp \"../Products/01_DeskFab_X1/SL 3DMPDESK.pdf\" public/docs/sl-3dmpdesk.pdf && ls -la public/docs/)"
     ],
     "additionalDirectories": [
-      "d:\\Downloads\\Strata Labs\\Videos"
+      "d:\\Downloads\\Strata Labs\\Videos",
+      "d:\\Downloads\\Strata Labs\\Products\\01_DeskFab_X1"
     ]
   }
 }

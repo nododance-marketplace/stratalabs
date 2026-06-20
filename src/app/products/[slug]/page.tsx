@@ -5,7 +5,7 @@ import { getProductBySlug, products, CATEGORY_META, formatPrice } from "@/data/p
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { CategoryBadge } from "@/components/product/CategoryBadge";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
-import { ArrowRightIcon, CheckIcon } from "@/components/ui/icons";
+import { ArrowRightIcon, CheckIcon, DownloadIcon } from "@/components/ui/icons";
 
 interface PageProps {
   params: { slug: string };
@@ -105,6 +105,20 @@ export default function ProductDetailPage({ params }: PageProps) {
                 prepare a quote with freight and installation included.
               </p>
             </>
+          )}
+
+          {/* Downloadable spec sheet */}
+          {product.datasheet && (
+            <a
+              href={product.datasheet}
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-titanium transition-all hover:border-accent/50 hover:text-accent-ember"
+            >
+              <DownloadIcon className="h-4 w-4" />
+              Download spec sheet (PDF)
+            </a>
           )}
 
           {/* Key highlights */}
