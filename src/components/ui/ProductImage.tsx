@@ -34,6 +34,8 @@ export function ProductImage({
           fill
           priority={priority}
           sizes="(max-width: 768px) 100vw, 33vw"
+          // SVGs (e.g. the CAD illustration) bypass the image optimizer.
+          unoptimized={src.endsWith(".svg")}
           className="object-contain p-4"
         />
       </div>
