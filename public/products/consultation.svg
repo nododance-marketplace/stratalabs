@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#F4F6F8"/>
+
+  <!-- Video-call window -->
+  <rect x="70" y="70" width="660" height="430" rx="18" fill="#FFFFFF" stroke="#D7DBE0" stroke-width="2"/>
+
+  <!-- Title bar -->
+  <circle cx="100" cy="100" r="6" fill="#D7DBE0"/>
+  <circle cx="122" cy="100" r="6" fill="#D7DBE0"/>
+  <circle cx="144" cy="100" r="6" fill="#D7DBE0"/>
+  <text x="172" y="105" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="2" fill="#5A5F66">STRATA LABS — CONSULTATION</text>
+  <line x1="70" y1="124" x2="730" y2="124" stroke="#ECEEF1" stroke-width="1.5"/>
+
+  <!-- Video tile -->
+  <rect x="100" y="150" width="600" height="290" rx="14" fill="#1B1D21"/>
+
+  <!-- Person silhouette -->
+  <circle cx="400" cy="282" r="44" fill="#8A8F98"/>
+  <path d="M332 392 C332 330 468 330 468 392 Z" fill="#8A8F98"/>
+
+  <!-- Live timer pill -->
+  <rect x="122" y="170" width="108" height="30" rx="15" fill="#FF6A00" fill-opacity="0.15" stroke="#FF6A00" stroke-width="1.4"/>
+  <circle cx="142" cy="185" r="4.5" fill="#FF6A00"/>
+  <text x="154" y="190" font-family="Consolas, monospace" font-size="14" fill="#FF6A00">30:00</text>
+  <text x="678" y="426" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="13" fill="#6B7178">Strata Labs</text>
+
+  <!-- Call controls -->
+  <g>
+    <circle cx="350" cy="470" r="24" fill="#2A2E35"/>
+    <rect x="346" y="460" width="8" height="14" rx="4" fill="#FFFFFF"/>
+    <path d="M343 470 a7 7 0 0 0 14 0" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+    <line x1="350" y1="477" x2="350" y2="482" stroke="#FFFFFF" stroke-width="2"/>
+
+    <circle cx="410" cy="470" r="24" fill="#2A2E35"/>
+    <rect x="400" y="463" width="16" height="14" rx="2.5" fill="#FFFFFF"/>
+    <path d="M416 467 l7 -3 v12 l-7 -3 z" fill="#FFFFFF"/>
+
+    <circle cx="470" cy="470" r="24" fill="#E5484D"/>
+    <rect x="461" y="467" width="18" height="6" rx="3" fill="#FFFFFF" transform="rotate(135 470 470)"/>
+  </g>
+
+  <!-- Caption -->
+  <text x="400" y="548" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="20" font-weight="500" fill="#2A2E35">30-minute Zoom consultation</text>
+</svg>

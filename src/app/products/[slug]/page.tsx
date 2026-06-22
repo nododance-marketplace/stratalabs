@@ -113,7 +113,8 @@ export default function ProductDetailPage({ params }: PageProps) {
           )}
 
           {/* Cross-sell: Design Partner included free with any printer */}
-          {product.category !== "Design" && (
+          {product.category !== "Design" &&
+            product.category !== "Consultation" && (
             <Link
               href="/products/design-partner"
               className="group mt-8 flex items-start gap-3 rounded-2xl border border-accent/30 bg-accent/[0.06] p-5 transition-colors hover:border-accent/60"

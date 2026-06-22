@@ -7,6 +7,7 @@ export type Category =
   | "Dental"
   | "Industrial"
   | "Design"
+  | "Consultation"
   | "SLS"
   | "Resin"
   | "Large-Format FDM";
