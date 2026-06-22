@@ -5,7 +5,12 @@ import { getProductBySlug, products, CATEGORY_META, formatPrice } from "@/data/p
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { CategoryBadge } from "@/components/product/CategoryBadge";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
-import { ArrowRightIcon, CheckIcon, DownloadIcon } from "@/components/ui/icons";
+import {
+  ArrowRightIcon,
+  CheckIcon,
+  DownloadIcon,
+  CubeIcon,
+} from "@/components/ui/icons";
 
 interface PageProps {
   params: { slug: string };
@@ -105,6 +110,29 @@ export default function ProductDetailPage({ params }: PageProps) {
                 prepare a quote with freight and installation included.
               </p>
             </>
+          )}
+
+          {/* Cross-sell: Design Partner included free with any printer */}
+          {product.category !== "Design" && (
+            <Link
+              href="/products/design-partner"
+              className="group mt-8 flex items-start gap-3 rounded-2xl border border-accent/30 bg-accent/[0.06] p-5 transition-colors hover:border-accent/60"
+            >
+              <CubeIcon className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+              <div>
+                <p className="font-heading text-sm text-white">
+                  Includes a 3-month Design Partner —{" "}
+                  <span className="text-accent">free</span>
+                </p>
+                <p className="mt-1 text-xs leading-relaxed text-steel">
+                  Buy this printer and get a dedicated 3D designer for 3 months —
+                  a $12,000 value — to turn your ideas into print-ready parts.{" "}
+                  <span className="text-accent group-hover:text-accent-signal">
+                    See what&apos;s included →
+                  </span>
+                </p>
+              </div>
+            </Link>
           )}
 
           {/* Downloadable spec sheet */}

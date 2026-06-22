@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#E2E6EA" stroke-width="1"/>
+    </pattern>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+      <path d="M0,0 L6.5,3 L0,6 Z" fill="#FF6A00"/>
+    </marker>
+  </defs>
+
+  <!-- Paper + grid -->
+  <rect width="800" height="600" fill="#F4F6F8"/>
+  <rect width="800" height="600" fill="url(#grid)"/>
+
+  <!-- Isometric plate: faces (subtle shading) -->
+  <polygon points="400,120 590.5,230 400,340 209.5,230" fill="#FFFFFF"/>
+  <polygon points="590.5,230 400,340 400,373 590.5,263" fill="#DCE3E8"/>
+  <polygon points="209.5,230 400,340 400,373 209.5,263" fill="#E7ECF0"/>
+
+  <!-- Hidden back edges (dashed) -->
+  <g stroke="#9AA1A8" stroke-width="1.5" stroke-dasharray="6 4" fill="none">
+    <path d="M400,120 400,153"/>
+    <path d="M400,153 590.5,263"/>
+    <path d="M400,153 209.5,263"/>
+  </g>
+
+  <!-- Solid edges -->
+  <g stroke="#2A2E35" stroke-width="2.6" stroke-linejoin="miter" stroke-linecap="round" fill="none">
+    <polygon points="400,120 590.5,230 400,340 209.5,230"/>
+    <path d="M590.5,230 590.5,263"/>
+    <path d="M400,340 400,373"/>
+    <path d="M209.5,230 209.5,263"/>
+    <path d="M590.5,263 400,373 209.5,263"/>
+  </g>
+
+  <!-- Hole on top face (orange rim = brand spark) -->
+  <ellipse cx="400" cy="222" rx="66" ry="37" fill="#F4F6F8" stroke="#FF6A00" stroke-width="2.6"/>
+  <ellipse cx="400" cy="231" rx="66" ry="37" fill="none" stroke="#C9CED4" stroke-width="1.4"/>
+
+  <!-- Vertex highlight dots -->
+  <g fill="#FF6A00">
+    <circle cx="400" cy="120" r="4"/>
+    <circle cx="590.5" cy="230" r="4"/>
+    <circle cx="209.5" cy="230" r="4"/>
+    <circle cx="400" cy="340" r="4"/>
+  </g>
+
+  <!-- Width dimension -->
+  <g stroke="#FF6A00" stroke-width="1.4">
+    <path d="M209.5,230 209.5,470" opacity="0.5"/>
+    <path d="M590.5,230 590.5,470" opacity="0.5"/>
+    <path d="M214,470 586,470" marker-start="url(#arw)" marker-end="url(#arw)"/>
+  </g>
+  <rect x="368" y="456" width="64" height="22" rx="3" fill="#F4F6F8"/>
+  <text x="400" y="472" text-anchor="middle" font-family="Consolas, monospace" font-size="17" fill="#2A2E35">240 mm</text>
+
+  <!-- Hole callout -->
+  <g stroke="#FF6A00" stroke-width="1.4" fill="none">
+    <path d="M452,196 520,150" marker-start="url(#arw)"/>
+    <path d="M520,150 600,150"/>
+  </g>
+  <text x="606" y="156" font-family="Consolas, monospace" font-size="18" fill="#2A2E35">&#216; 24</text>
+
+  <!-- Axis triad -->
+  <g stroke-width="2" fill="none">
+    <path d="M120,500 182,527" stroke="#5A5F66" marker-end="url(#arw)"/>
+    <path d="M120,500 58,527" stroke="#5A5F66" marker-end="url(#arw)"/>
+    <path d="M120,500 120,432" stroke="#5A5F66" marker-end="url(#arw)"/>
+  </g>
+  <g font-family="Consolas, monospace" font-size="14" fill="#5A5F66">
+    <text x="188" y="534">X</text>
+    <text x="44" y="534">Y</text>
+    <text x="112" y="424">Z</text>
+  </g>
+
+  <!-- Title block -->
+  <g>
+    <rect x="556" y="498" width="234" height="64" rx="4" fill="none" stroke="#C9CED4" stroke-width="1.4"/>
+    <line x1="556" y1="524" x2="790" y2="524" stroke="#C9CED4" stroke-width="1.2"/>
+    <text x="568" y="516" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="2" fill="#2A2E35">STRATA LABS · DESIGN PARTNER</text>
+    <text x="568" y="542" font-family="Consolas, monospace" font-size="12" fill="#5A5F66">PART  SLD-001</text>
+    <text x="568" y="557" font-family="Consolas, monospace" font-size="12" fill="#5A5F66">SCALE 1:1   ISO VIEW   UNITS mm</text>
+  </g>
+</svg>

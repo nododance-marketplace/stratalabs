@@ -18,7 +18,12 @@ import type { Category, Product } from "@/lib/types";
  *  ─────────────────────────────────────────────────────────────────────────
  */
 
-export const CATEGORIES: Category[] = ["Desktop", "Dental", "Industrial"];
+export const CATEGORIES: Category[] = [
+  "Desktop",
+  "Dental",
+  "Industrial",
+  "Design",
+];
 
 /** Human-readable copy for each category badge / filter. */
 export const CATEGORY_META: Record<
@@ -39,6 +44,11 @@ export const CATEGORY_META: Record<
     label: "Industrial",
     blurb:
       "Large- and super-large-format SLM for molds, tooling, and serious mass production.",
+  },
+  Design: {
+    label: "Design",
+    blurb:
+      "A dedicated 3D designer on your team — turn ideas into print-ready parts.",
   },
   SLS: {
     label: "SLS",
@@ -279,6 +289,39 @@ export const products: Product[] = [
     ],
     images: ["/products/sl-3dmp420.png"],
     featured: true,
+  },
+
+  // ─── SERVICE ─────────────────────────────────────────────────────────────
+  {
+    slug: "design-partner",
+    name: "Design Partner — 3-Month Plan",
+    category: "Design",
+    specLine: "A dedicated 3D designer for 3 months · free with any printer",
+    priceCents: 1_200_000, // $12,000 for the 3-month engagement
+    description:
+      "Your printer is only as good as the files you feed it. The Design Partner puts a dedicated senior 3D/CAD designer on your team for three months — turning rough sketches, reference photos, and “we should make this” ideas into production-ready, print-optimized parts. No new hire, no software to learn, no waiting on freelancers who’ve never touched a metal printer. From day one you get an expert who designs for your machine and your materials, so the printer you invested in actually earns its keep. And when you buy any Strata Labs printer, these three months are included free — a $12,000 head start on whatever you build next.",
+    highlights: [
+      "A dedicated senior CAD/3D designer for 3 full months — your designer, not a shared queue",
+      "Unlimited parts and revisions, from napkin sketch to print-ready STEP / STL / 3MF",
+      "Design-for-additive expertise: lightweighting, supports, tolerances, and material selection",
+      "Fits your stack — SolidWorks, Fusion 360, Rhino, and more",
+      "Kickoff within 48 hours; first print-ready files in days, not months",
+      "Included FREE with any Strata Labs printer — a $12,000 value",
+    ],
+    specs: [
+      { label: "Term", value: "3 months" },
+      { label: "Designer", value: "Dedicated senior CAD / 3D specialist" },
+      { label: "Revisions", value: "Unlimited" },
+      { label: "Deliverables", value: "Print-ready STL / STEP / 3MF" },
+      {
+        label: "Disciplines",
+        value: "Mechanical, product, dental, tooling, reverse-engineering",
+      },
+      { label: "Software", value: "SolidWorks, Fusion 360, Rhino" },
+      { label: "Onboarding", value: "Within 48 hours" },
+      { label: "Included free with", value: "Any Strata Labs printer" },
+    ],
+    images: ["/products/design-partner.svg"],
   },
 
   // ─── COMING SOON ─────────────────────────────────────────────────────────

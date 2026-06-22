@@ -65,7 +65,9 @@
       "Bash(curl -s --max-time 60 -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3030/)",
       "Bash(curl -s --max-time 60 http://localhost:3030/)",
       "Bash(curl -s --max-time 30 \"http://localhost:3030/_next/static/css/app/layout.css\")",
-      "Bash(cd \"d:/Downloads/Strata Labs/Website\" && mkdir -p public/docs && cp \"../Products/01_DeskFab_X1/SL 3DMPDESK.pdf\" public/docs/sl-3dmpdesk.pdf && ls -la public/docs/)"
+      "Bash(cd \"d:/Downloads/Strata Labs/Website\" && mkdir -p public/docs && cp \"../Products/01_DeskFab_X1/SL 3DMPDESK.pdf\" public/docs/sl-3dmpdesk.pdf && ls -la public/docs/)",
+      "Bash(curl -s --max-time 60 http://localhost:3030/products/sl-3dmpdesk)",
+      "Bash(curl -s --max-time 30 -o /dev/null -w \"%{http_code} %{content_type} %{size_download}bytes\\\\n\" http://localhost:3030/docs/sl-3dmpdesk.pdf)"
     ],
     "additionalDirectories": [
       "d:\\Downloads\\Strata Labs\\Videos",

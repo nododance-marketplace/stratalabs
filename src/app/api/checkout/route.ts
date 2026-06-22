@@ -55,7 +55,10 @@ export async function POST(req: Request) {
         product_data: {
           name: product.name,
           description: product.specLine,
-          ...(canLinkImages && product.images[0]
+          // Stripe wants public raster URLs; skip SVGs and local origins.
+          ...(canLinkImages &&
+          product.images[0] &&
+          !product.images[0].endsWith(".svg")
             ? { images: [origin + product.images[0]] }
             : {}),
         },
