@@ -296,6 +296,53 @@ export const products: Product[] = [
     featured: true,
   },
 
+  // ─── DENTAL SCANNER ──────────────────────────────────────────────────────
+  {
+    slug: "sl-intraoral-scanner",
+    name: "SL Intraoral Scanner",
+    category: "Dental",
+    specLine: "8µm accuracy · open system · STL/PLY/OBJ · autoclavable tips",
+    priceCents: 500_000, // $5,000
+    description:
+      "A high-technology intraoral scanner that turns a chairside scan into a precise 3D model in seconds — the perfect front end for in-house dental printing. Capture accurate digital impressions at 8µm single-crown accuracy, skip the messy trays, and send print-ready STL/PLY/OBJ files straight to your SLM dental printer. It’s an open system (no license fees), with autoclavable tips, built-in anti-fog heating, and AI tools for model building, occlusion and undercut analysis, and smile simulation. Lightweight (≤240g) and fast, it pairs perfectly with our dental metal printers to take you from scan to finished crown — all under one roof.",
+    highlights: [
+      "8µm single-crown accuracy — print-ready STL / PLY / OBJ in seconds",
+      "Open system: no license fees, works with your existing CAD/CAM workflow",
+      "Built-in anti-fog heating; autoclavable tips (134°C), 100–150 cycles",
+      "AI tools: model builder, occlusion & undercut analysis, smile simulator",
+      "Lightweight ≤240g, USB 3.0; standard + pediatric scanning tips included",
+      "Pairs perfectly with our SLM dental printers — scan to crown, in-house",
+    ],
+    specs: [
+      { label: "Type", value: "Intraoral 3D dental scanner" },
+      { label: "Accuracy (single crown)", value: "8 µm (±11 µm)" },
+      { label: "Anti-Fog Technology", value: "Built-in automatic heating fan" },
+      { label: "Output Format", value: "STL / PLY / OBJ" },
+      { label: "Scan Speed", value: "<25 s (single arch)" },
+      { label: "Scan Depth", value: "23 mm" },
+      { label: "Cable Length", value: "2 m" },
+      { label: "Data Transmission", value: "USB 3.0" },
+      {
+        label: "Scanning Tip Size",
+        value: "Standard 95.3×22.5×16.6 mm; Pediatric 94×17.9×13.2 mm",
+      },
+      {
+        label: "Scanning Tips",
+        value: "3× standard + 1× pediatric; autoclavable 134°C, 100–150 cycles",
+      },
+      { label: "Weight", value: "≤240 g" },
+      { label: "Scanner Size", value: "240 (L) × 45 (W) × 36 (H) mm" },
+      { label: "Sensor", value: "High-speed CMOS" },
+      {
+        label: "System Requirements",
+        value:
+          "Intel i7-13700HX, NVIDIA RTX 4060 6G, 32GB RAM, 1TB SSD, Windows 11 64-bit, USB 3.2 Gen 1",
+      },
+    ],
+    images: ["/products/sl-intraoral-scanner.png"],
+    datasheet: "/docs/sl-intraoral-scanner.pdf",
+  },
+
   // ─── SERVICE ─────────────────────────────────────────────────────────────
   {
     slug: "design-partner",
