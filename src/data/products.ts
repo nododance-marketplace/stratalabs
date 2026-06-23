@@ -127,7 +127,9 @@ export const products: Product[] = [
     name: "SL 3DMP140",
     category: "Dental",
     specLine: "Ø140 × 170 mm build · 500 W laser · ~150 teeth per run",
-    priceCents: null, // Awaiting vendor price + markup. Set cents to enable checkout (e.g. 9_500_000 = $95,000).
+    priceCents: 5_500_000, // $55,000
+    compareAtCents: 14_500_000, // competitors list comparable machines at ~$145,000
+    compareUrl: "https://store.oneclickmetal.com/us-boldseries/mprint_805_2142/",
     description:
       "A specialized single-laser SLM dental metal printer with a Ø140 mm build and one-click dental typesetting. Built for precise, customized dental components with high throughput.",
     highlights: [

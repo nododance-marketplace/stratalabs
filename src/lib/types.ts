@@ -31,6 +31,13 @@ export interface Product {
    * Set to null/omit to show "Contact for pricing" and disable online payment.
    */
   priceCents: number | null;
+  /**
+   * Optional competitor "compare-at" price in US cents, shown struck-through
+   * next to ours to highlight the savings (e.g. 14_500_000 = $145,000).
+   */
+  compareAtCents?: number;
+  /** Link to the competitor's listing, shown as "See for yourself". */
+  compareUrl?: string;
   /** Short marketing description shown on the product detail page. */
   description: string;
   /** Bullet highlights shown on the product detail page (optional). */

@@ -39,10 +39,17 @@ export function ProductCard({ product }: { product: Product }) {
 
         <div className="mt-auto flex items-center justify-between pt-4">
           {product.priceCents != null ? (
-            <span className="text-sm text-titanium">
-              {product.inquiryOnly
-                ? `From ${formatPrice(product.priceCents)}`
-                : formatPrice(product.priceCents)}
+            <span className="flex items-baseline gap-2">
+              <span className="text-sm text-titanium">
+                {product.inquiryOnly
+                  ? `From ${formatPrice(product.priceCents)}`
+                  : formatPrice(product.priceCents)}
+              </span>
+              {product.compareAtCents != null && (
+                <span className="text-xs text-steel/70 line-through">
+                  {formatPrice(product.compareAtCents)}
+                </span>
+              )}
             </span>
           ) : (
             <span className="text-sm text-steel">Talk to sales</span>

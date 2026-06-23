@@ -119,6 +119,34 @@ export default function ProductDetailPage({ params }: PageProps) {
             </>
           )}
 
+          {/* Competitor price comparison */}
+          {product.compareAtCents != null && product.priceCents != null && (
+            <div className="mt-5 rounded-xl border border-accent/25 bg-accent/[0.05] px-5 py-4">
+              <p className="text-sm leading-relaxed text-titanium">
+                Competitors list comparable machines at{" "}
+                <span className="text-steel line-through">
+                  {formatPrice(product.compareAtCents)}
+                </span>
+                . You save{" "}
+                <span className="font-semibold text-accent">
+                  {formatPrice(product.compareAtCents - product.priceCents)}
+                </span>{" "}
+                with Strata Labs.
+              </p>
+              {product.compareUrl && (
+                <a
+                  href={product.compareUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1.5 inline-flex items-center gap-1 text-xs text-accent transition-colors hover:text-accent-signal"
+                >
+                  See a competitor&apos;s price for yourself
+                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                </a>
+              )}
+            </div>
+          )}
+
           {/* Cross-sell: Design Partner included free with any printer
               (printers only — not the services or the scanner). */}
           {product.category !== "Design" &&
