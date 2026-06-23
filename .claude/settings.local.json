@@ -109,7 +109,13 @@
       "Bash(echo \"pdf: $\\(curl -s --max-time 30 -o /dev/null -w '%{http_code} %{content_type}' http://localhost:3030/docs/sl-intraoral-scanner.pdf\\)\")",
       "Bash(curl -s --max-time 60 http://localhost:3030/shop)",
       "Bash(mkdir -p \"Website/public/video\")",
-      "Bash(cp \"Videos/Real Example Video.mp4\" \"Website/public/video/shop-real-example.mp4\")"
+      "Bash(cp \"Videos/Real Example Video.mp4\" \"Website/public/video/shop-real-example.mp4\")",
+      "Bash(echo \"shop refs video: $\\(curl -s --max-time 60 http://localhost:3030/shop)",
+      "Bash(ffmpeg -version)",
+      "Bash(node -e \"const b=require\\('fs'\\).readFileSync\\('Website/public/video/shop-real-example.mp4'\\);const i=b.indexOf\\(Buffer.from\\('tkhd'\\)\\);const s=i-4,sz=b.readUInt32BE\\(s\\);console.log\\('dims', \\(b.readUInt32BE\\(s+sz-8\\)>>>16\\)+'x'+\\(b.readUInt32BE\\(s+sz-4\\)>>>16\\)\\)\")",
+      "Bash(curl -s --max-time 60 -o /dev/null -w '%{http_code} %{size_download}bytes' http://localhost:3030/video/shop-real-example.mp4)",
+      "Bash(echo \"served size: $\\(curl -s --max-time 60 -o /dev/null -w '%{http_code} %{size_download}bytes' http://localhost:3030/video/shop-real-example.mp4 \\)\")",
+      "Bash(echo \"served: $\\(curl -s --max-time 60 -o /dev/null -w '%{http_code} %{size_download}bytes' http://localhost:3030/video/shop-real-example.mp4 \\)\")"
     ],
     "additionalDirectories": [
       "d:\\Downloads\\Strata Labs\\Videos",

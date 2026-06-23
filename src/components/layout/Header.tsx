@@ -35,7 +35,7 @@ export function Header() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-30 transition-all duration-300 ${
-          scrolled
+          scrolled || menuOpen
             ? "glass border-b border-white/[0.06]"
             : "border-b border-transparent bg-transparent"
         }`}
@@ -112,9 +112,10 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu — near-solid dark panel so text stays legible over
+            any page content/video behind it. */}
         <div
-          className={`overflow-hidden border-t border-white/[0.06] glass md:hidden ${
+          className={`overflow-hidden border-t border-white/[0.06] bg-base-900/95 backdrop-blur-xl shadow-[0_24px_48px_-12px_rgba(0,0,0,0.85)] md:hidden ${
             menuOpen ? "max-h-64" : "max-h-0 border-t-0"
           } transition-[max-height] duration-300`}
         >
@@ -123,7 +124,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="border-b border-white/[0.05] py-3 text-sm text-titanium last:border-0"
+                className="border-b border-white/[0.06] py-3.5 text-sm font-medium text-white last:border-0"
               >
                 {item.label}
               </Link>
