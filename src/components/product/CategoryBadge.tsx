@@ -5,7 +5,6 @@ const STYLES: Record<Category, string> = {
   Dental: "border-accent/40 text-accent-ember",
   Industrial: "border-titanium/40 text-titanium",
   Design: "border-accent/50 bg-accent/10 text-accent-ember",
-  Consultation: "border-steel/50 text-steel",
   AI: "border-accent/50 bg-accent/10 text-accent-ember",
   SLS: "border-steel/50 text-steel",
   Resin: "border-steel/50 text-steel",

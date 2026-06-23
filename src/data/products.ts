@@ -23,7 +23,6 @@ export const CATEGORIES: Category[] = [
   "Dental",
   "Industrial",
   "Design",
-  "Consultation",
   "AI",
 ];
 
@@ -51,10 +50,6 @@ export const CATEGORY_META: Record<
     label: "Design",
     blurb:
       "A dedicated 3D designer on your team — turn ideas into print-ready parts.",
-  },
-  Consultation: {
-    label: "Consultation",
-    blurb: "Book a quick Zoom call with a Strata Labs specialist.",
   },
   AI: {
     label: "AI",
@@ -380,28 +375,6 @@ export const products: Product[] = [
       { label: "Included free with", value: "Any Strata Labs printer" },
     ],
     images: ["/products/design-partner.svg"],
-  },
-  {
-    slug: "consultation",
-    name: "Consultation",
-    category: "Consultation",
-    specLine: "30-minute Zoom consultation · book a call with our team",
-    priceCents: 100, // $1.00
-    description:
-      "Not sure where to start? Book a 30-minute Zoom consultation with a Strata Labs specialist. Bring your parts, materials, target volumes, and budget — we’ll help you choose the right printer or service and map out clear next steps. You’ll receive a Zoom link by email after booking.",
-    highlights: [
-      "30 minutes, one-on-one with a Strata Labs specialist over Zoom",
-      "Talk through your parts, materials, volumes, and budget",
-      "Get a clear recommendation — printer, design help, or both",
-      "Zoom link emailed to you after checkout",
-    ],
-    specs: [
-      { label: "Format", value: "Zoom video call" },
-      { label: "Duration", value: "30 minutes" },
-      { label: "Availability", value: "Mon–Fri, US business hours" },
-      { label: "Booking", value: "Link emailed after checkout" },
-    ],
-    images: ["/products/consultation.svg"],
   },
   {
     slug: "ai-transformation",

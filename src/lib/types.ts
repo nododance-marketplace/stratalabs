@@ -7,7 +7,6 @@ export type Category =
   | "Dental"
   | "Industrial"
   | "Design"
-  | "Consultation"
   | "AI"
   | "SLS"
   | "Resin"

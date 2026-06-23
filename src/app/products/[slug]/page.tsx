@@ -122,7 +122,6 @@ export default function ProductDetailPage({ params }: PageProps) {
           {/* Cross-sell: Design Partner included free with any printer
               (printers only — not the services or the scanner). */}
           {product.category !== "Design" &&
-            product.category !== "Consultation" &&
             product.category !== "AI" &&
             product.slug !== "sl-intraoral-scanner" && (
             <Link
