@@ -40,7 +40,9 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="mt-auto flex items-center justify-between pt-4">
           {product.priceCents != null ? (
             <span className="text-sm text-titanium">
-              {formatPrice(product.priceCents)}
+              {product.inquiryOnly
+                ? `From ${formatPrice(product.priceCents)}`
+                : formatPrice(product.priceCents)}
             </span>
           ) : (
             <span className="text-sm text-steel">Talk to sales</span>
@@ -49,7 +51,9 @@ export function ProductCard({ product }: { product: Product }) {
             href={`/products/${product.slug}`}
             className="inline-flex items-center gap-1.5 text-sm text-accent transition-colors hover:text-accent-signal"
           >
-            {product.priceCents != null ? "View Details" : "Get a quote"}
+            {product.priceCents != null && !product.inquiryOnly
+              ? "View Details"
+              : "Learn more"}
             <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>

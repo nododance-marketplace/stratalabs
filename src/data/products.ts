@@ -24,6 +24,7 @@ export const CATEGORIES: Category[] = [
   "Industrial",
   "Design",
   "Consultation",
+  "AI",
 ];
 
 /** Human-readable copy for each category badge / filter. */
@@ -54,6 +55,11 @@ export const CATEGORY_META: Record<
   Consultation: {
     label: "Consultation",
     blurb: "Book a quick Zoom call with a Strata Labs specialist.",
+  },
+  AI: {
+    label: "AI",
+    blurb:
+      "AI integration, automations, agents & websites — built to move your business years ahead.",
   },
   SLS: {
     label: "SLS",
@@ -396,6 +402,37 @@ export const products: Product[] = [
       { label: "Booking", value: "Link emailed after checkout" },
     ],
     images: ["/products/consultation.svg"],
+  },
+  {
+    slug: "ai-transformation",
+    name: "AI Transformation",
+    category: "AI",
+    specLine: "AI integration, websites, automations & agents · from $9,000",
+    priceCents: 900_000, // $9,000 starting point — scoped on a call
+    inquiryOnly: true,
+    description:
+      "Most businesses can feel it: AI is quietly rewriting the rules, and the gap between the companies that use it and the ones that don’t is widening every month. Your competitors are answering leads in seconds, automating the busywork, and shipping in days what used to take you weeks — while your team is still doing it by hand. We close that gap. Strata Labs builds AI into the core of how your business runs: a website that actually converts, automations that erase repetitive work, and AI agents that quietly handle the tasks your people dread. We’ve done it for jewelers, engineers, clinics, and manufacturers — and we genuinely love this work, which is why we move fast and price it like nobody else can. The end state isn’t “some software.” It’s hours back every week, leads that never slip through the cracks, and a business that feels years ahead of its market. The first step is a single conversation where we show you exactly what this looks like for you. Reach out — and ask us what’s possible.",
+    highlights: [
+      "Custom, high-converting websites — built fast, priced unlike anything on the market",
+      "Automations that erase repetitive work and hand your team hours back every week",
+      "AI agents that handle the tasks people dread — quietly, accurately, around the clock",
+      "A roadmap mapped to YOUR business: jewelers, engineers, clinics, manufacturers, services",
+      "Built and run by a team that lives in this every day — not a side project",
+      "Outcome-obsessed: more leads captured, less manual work, a real competitive edge",
+    ],
+    specs: [
+      { label: "Engagement", value: "Custom AI transformation for your business" },
+      { label: "Starts at", value: "$9,000 (scoped on a call)" },
+      { label: "Discovery", value: "AI opportunity audit — where it moves the needle" },
+      { label: "Build", value: "Websites · automations · AI agents · integrations" },
+      {
+        label: "Industries",
+        value: "Jewelry, engineering, healthcare, manufacturing, professional services",
+      },
+      { label: "Team", value: "Senior AI builders & automation specialists" },
+      { label: "First step", value: "A strategy call — we scope it to you" },
+    ],
+    images: ["/products/ai-transformation.svg"],
   },
 
   // ─── COMING SOON ─────────────────────────────────────────────────────────

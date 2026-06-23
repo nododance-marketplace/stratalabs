@@ -74,7 +74,7 @@ export default function ProductDetailPage({ params }: PageProps) {
             {product.description}
           </p>
 
-          {product.priceCents != null ? (
+          {product.priceCents != null && !product.inquiryOnly ? (
             <>
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <span className="font-heading text-2xl text-white">
@@ -96,18 +96,25 @@ export default function ProductDetailPage({ params }: PageProps) {
             </>
           ) : (
             <>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <span className="text-sm uppercase tracking-[0.2em] text-steel">
-                  Pricing on request
-                </span>
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+                {product.priceCents != null ? (
+                  <span className="font-heading text-2xl text-white">
+                    From {formatPrice(product.priceCents)}
+                  </span>
+                ) : (
+                  <span className="text-sm uppercase tracking-[0.2em] text-steel">
+                    Pricing on request
+                  </span>
+                )}
                 <Link href="/contact" className="btn-spark group px-7 py-3.5 text-sm">
                   Talk to Sales
                   <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
               <p className="mt-3 text-xs text-steel">
-                This machine is configured to order. Our US-based team will
-                prepare a quote with freight and installation included.
+                {product.inquiryOnly
+                  ? "Every engagement is scoped on a quick, no-pressure call — tell us about your business and we’ll show you exactly what’s possible."
+                  : "This machine is configured to order. Our US-based team will prepare a quote with freight and installation included."}
               </p>
             </>
           )}
@@ -116,6 +123,7 @@ export default function ProductDetailPage({ params }: PageProps) {
               (printers only — not the services or the scanner). */}
           {product.category !== "Design" &&
             product.category !== "Consultation" &&
+            product.category !== "AI" &&
             product.slug !== "sl-intraoral-scanner" && (
             <Link
               href="/products/design-partner"

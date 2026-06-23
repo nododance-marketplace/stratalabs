@@ -8,6 +8,7 @@ export type Category =
   | "Industrial"
   | "Design"
   | "Consultation"
+  | "AI"
   | "SLS"
   | "Resin"
   | "Large-Format FDM";
@@ -49,6 +50,12 @@ export interface Product {
   datasheet?: string;
   /** Surface this product in the homepage "Featured" grid. */
   featured?: boolean;
+  /**
+   * Show the price as an anchor ("From $X") but route the CTA to a sales
+   * conversation (Talk to Sales → /contact) instead of online checkout.
+   * For bespoke, scoped engagements that you want to close on a call.
+   */
+  inquiryOnly?: boolean;
   /**
    * Upcoming inventory placeholder. Shown in the shop's "Coming soon" section
    * with no price and a "Register interest" CTA (not purchasable, no detail
