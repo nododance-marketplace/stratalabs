@@ -98,7 +98,18 @@
       "Bash(node scripts/make-scanner-pdf.mjs)",
       "Bash(curl -s -o \"public/products/sl-intraoral-scanner.png\" \"https://d8j0ntlcm91z4.cloudfront.net/user_38XrHGTtSK27yf0pS8BOC0iycl6/hf_20260622_190353_f533dab8-63e2-47d6-87cb-c6134ebd3081.png\")",
       "Bash(cp \"public/products/sl-intraoral-scanner.png\" \"../Products/Lidar Dental Scanner/Lidar Scanner from Yisu/Strata Branded/00_product_cover.png\")",
-      "Bash(node -e \"const b=require\\('fs'\\).readFileSync\\('public/products/sl-intraoral-scanner.png'\\);console.log\\('PNG',b.readUInt32BE\\(16\\)+'x'+b.readUInt32BE\\(20\\), Math.round\\(b.length/1024\\)+'KB'\\)\")"
+      "Bash(node -e \"const b=require\\('fs'\\).readFileSync\\('public/products/sl-intraoral-scanner.png'\\);console.log\\('PNG',b.readUInt32BE\\(16\\)+'x'+b.readUInt32BE\\(20\\), Math.round\\(b.length/1024\\)+'KB'\\)\")",
+      "Bash(curl -s --max-time 60 -o /dev/null -w '%{http_code}' http://localhost:3030/products/sl-intraoral-scanner)",
+      "Bash(echo \"product page: $\\(curl -s --max-time 60 -o /dev/null -w '%{http_code}' http://localhost:3030/products/sl-intraoral-scanner\\)\")",
+      "Bash(curl -s --max-time 60 http://localhost:3030/products/sl-intraoral-scanner)",
+      "Bash(grep -oE '\\\\$5,000|Add to Cart|Download spec sheet|8 µm')",
+      "Bash(curl -s --max-time 30 -o /dev/null -w '%{http_code}' http://localhost:3030/products/sl-intraoral-scanner.png)",
+      "Bash(echo \"image: $\\(curl -s --max-time 30 -o /dev/null -w '%{http_code}' http://localhost:3030/products/sl-intraoral-scanner.png\\)\")",
+      "Bash(curl -s --max-time 30 -o /dev/null -w '%{http_code} %{content_type}' http://localhost:3030/docs/sl-intraoral-scanner.pdf)",
+      "Bash(echo \"pdf: $\\(curl -s --max-time 30 -o /dev/null -w '%{http_code} %{content_type}' http://localhost:3030/docs/sl-intraoral-scanner.pdf\\)\")",
+      "Bash(curl -s --max-time 60 http://localhost:3030/shop)",
+      "Bash(mkdir -p \"Website/public/video\")",
+      "Bash(cp \"Videos/Real Example Video.mp4\" \"Website/public/video/shop-real-example.mp4\")"
     ],
     "additionalDirectories": [
       "d:\\Downloads\\Strata Labs\\Videos",
