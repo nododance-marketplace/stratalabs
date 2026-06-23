@@ -127,7 +127,7 @@ export const products: Product[] = [
     name: "SL 3DMP140",
     category: "Dental",
     specLine: "Ø140 × 170 mm build · 500 W laser · ~150 teeth per run",
-    priceCents: 5_500_000, // $55,000
+    priceCents: 6_600_000, // $66,000
     compareAtCents: 14_500_000, // competitors list comparable machines at ~$145,000
     compareUrl: "https://store.oneclickmetal.com/us-boldseries/mprint_805_2142/",
     description:
