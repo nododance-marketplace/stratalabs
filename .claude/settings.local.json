@@ -127,7 +127,9 @@
       "Bash(echo \"price present: $\\(curl -s --max-time 40 http://localhost:3030/products/ai-transformation)",
       "Bash(echo \"consultation page now 404: $\\(curl -s --max-time 60 -o /dev/null -w '%{http_code}' http://localhost:3030/products/consultation\\)\")",
       "Bash(echo \"shop still lists Consultation? \\(should be empty\\): $\\(curl -s --max-time 60 http://localhost:3030/shop)",
-      "Bash(curl -s --max-time 60 http://localhost:3030/products/sl-3dmp140)"
+      "Bash(curl -s --max-time 60 http://localhost:3030/products/sl-3dmp140)",
+      "WebSearch",
+      "WebFetch(domain:www.3dfastform.com)"
     ],
     "additionalDirectories": [
       "d:\\Downloads\\Strata Labs\\Videos",

@@ -298,6 +298,46 @@ export const products: Product[] = [
     images: ["/products/sl-3dmp420.png"],
     featured: true,
   },
+  {
+    slug: "sl-3dmp800",
+    name: "SL 3DMP800",
+    category: "Industrial",
+    specLine: "Super-large multi-laser SLM · 4 lasers · industrial mass production",
+    priceCents: null, // Flagship — quoted per project. Talk to Sales.
+    description:
+      "Our most industrial machine. The SL 3DMP800 is a super-large-format, multi-laser SLM system built for serious production — four lasers paired with a dual vibrating-mirror system, bidirectional variable-speed powder feeding, and Z-axis closed-loop control all working together to melt large metal parts fast and repeatably. Print across stainless steel, tool steel, nickel, aluminum, and titanium alloys at a layer resolution down to 150 µm and precision under 100 µm. When your throughput outgrows everything else in the lineup, this is the floor-standing workhorse that keeps up — backed by US-based support from install onward.",
+    highlights: [
+      "Our most industrial system — super-large-format, multi-laser SLM for serious production",
+      "4 lasers with a dual vibrating-mirror system for high-throughput melting",
+      "Bidirectional, variable-speed powder feeding for faster builds",
+      "Z-axis closed-loop control for consistent, repeatable layers",
+      "Stainless, tool steel, nickel, aluminum & titanium alloys — under 100 µm precision",
+      "Efficient filter cartridge and air management; data processing in ~5 minutes",
+    ],
+    specs: [
+      { label: "Model No.", value: "SL 3DMP800" },
+      {
+        label: "Forming Technology",
+        value: "SLM (Selective Laser Melting), multi-laser",
+      },
+      { label: "Number of Lasers", value: "4 (multi-laser)" },
+      { label: "Build Format", value: "Super-large / extra-large format" },
+      { label: "Precision", value: "<100 µm" },
+      { label: "Layer Thickness", value: "150–200 µm" },
+      { label: "Powder Feeding", value: "Bidirectional, variable-speed" },
+      { label: "Motion Control", value: "Z-axis closed-loop" },
+      {
+        label: "Material Class",
+        value:
+          "Metal powder — stainless steel, tool steel, nickel alloy, aluminum alloy, titanium alloy",
+      },
+      { label: "Operating System", value: "Windows 10" },
+      { label: "File Formats", value: "STEP, IGES, SLC, CLI, STL" },
+      { label: "Connection", value: "WiFi" },
+      { label: "Warranty", value: "One Year" },
+    ],
+    images: ["/products/sl-3dmp800.png"],
+  },
 
   // ─── DENTAL SCANNER ──────────────────────────────────────────────────────
   {
