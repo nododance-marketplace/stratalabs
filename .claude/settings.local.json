@@ -139,7 +139,17 @@
       "Bash(curl -s --max-time 50 http://localhost:3030/products/sl-intraoral-scanner)",
       "Bash(echo \"scanner page shows: $\\(curl -s --max-time 50 http://localhost:3030/products/sl-intraoral-scanner)",
       "Bash(ls -la \"Accessories Pricing\")",
-      "Bash(ls -la \"Pricing for all the Products\")"
+      "Bash(ls -la \"Pricing for all the Products\")",
+      "Bash(grep -oE 'Configure your system|Accessory & Equipment Package|Included with your printer|Your total|Add to Cart|\\\\+\\\\$4,500')",
+      "Bash(curl -s --max-time 50 http://localhost:3030/products/sl-3dmp300)",
+      "Bash(grep -oE 'Configure your system|Wire-cutting machine|Grinding machine|Configured estimate|Talk to Sales|\\\\$13,500')",
+      "Bash(curl -s --max-time 50 http://localhost:3030/products/sl-3dmp800)",
+      "Bash(echo \"DESK package + price present: $\\(curl -s --max-time 50 http://localhost:3030/products/sl-3dmpdesk)",
+      "Bash(mkdir -p Website/public/quotes)",
+      "Bash(cp '__TRACKED_VAR__/SL 3DMPDESK - Strata Labs Quote.pdf' Website/public/quotes/sl-3dmpdesk-quote.pdf)",
+      "Bash(cp '__TRACKED_VAR__/SL 3DMP140 - Strata Labs Quote.pdf' Website/public/quotes/sl-3dmp140-quote.pdf)",
+      "Bash(cp '__TRACKED_VAR__/SL 3DMP220 - Strata Labs Quote.pdf' Website/public/quotes/sl-3dmp220-quote.pdf)",
+      "Bash(cp '__TRACKED_VAR__/SL 3DMP300 - Strata Labs Quote.pdf' Website/public/quotes/sl-3dmp300-quote.pdf)"
     ],
     "additionalDirectories": [
       "d:\\Downloads\\Strata Labs\\Videos",

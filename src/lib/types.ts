@@ -54,6 +54,12 @@ export interface Product {
    * "/docs/sl-3dmpdesk.pdf"). Shows a "Download spec sheet" button when set.
    */
   datasheet?: string;
+  /**
+   * Optional downloadable quotation PDF (path under /public, e.g.
+   * "/quotes/sl-3dmp140-quote.pdf"). Shows a "View Quotation (PDF)" button
+   * on the product card and detail page when set.
+   */
+  quotePdf?: string;
   /** Surface this product in the homepage "Featured" grid. */
   featured?: boolean;
   /**

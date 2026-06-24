@@ -12,6 +12,7 @@ import {
   CheckIcon,
   DownloadIcon,
   CubeIcon,
+  FileTextIcon,
 } from "@/components/ui/icons";
 
 interface PageProps {
@@ -128,6 +129,19 @@ export default function ProductDetailPage({ params }: PageProps) {
                   : "This machine is configured to order. Our US-based team will prepare a quote with freight and installation included."}
               </p>
             </>
+          )}
+
+          {/* Downloadable quotation PDF */}
+          {product.quotePdf && (
+            <a
+              href={product.quotePdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/[0.06] px-6 py-3 text-sm font-medium text-accent transition-colors hover:border-accent hover:bg-accent/15"
+            >
+              <FileTextIcon className="h-4 w-4" />
+              View Quotation (PDF)
+            </a>
           )}
 
           {/* Competitor price comparison */}

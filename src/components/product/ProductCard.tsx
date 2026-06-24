@@ -3,7 +3,7 @@ import type { Product } from "@/lib/types";
 import { formatPrice } from "@/data/products";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { CategoryBadge } from "./CategoryBadge";
-import { ArrowRightIcon } from "@/components/ui/icons";
+import { ArrowRightIcon, FileTextIcon } from "@/components/ui/icons";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
@@ -64,6 +64,18 @@ export function ProductCard({ product }: { product: Product }) {
             <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
+
+        {product.quotePdf && (
+          <a
+            href={product.quotePdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 border-t border-white/[0.06] pt-3 text-xs font-medium text-accent transition-colors hover:text-accent-signal"
+          >
+            <FileTextIcon className="h-3.5 w-3.5" />
+            View Quotation (PDF)
+          </a>
+        )}
       </div>
     </article>
   );

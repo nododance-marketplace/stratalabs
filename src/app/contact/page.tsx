@@ -33,7 +33,42 @@ export default function ContactPage() {
                 <dt className="text-xs uppercase tracking-[0.2em] text-steel">
                   Email
                 </dt>
-                <dd className="mt-1 text-titanium">sales@stratalabs.example</dd>
+                <dd className="mt-1">
+                  <a
+                    href="mailto:stratalabs3d@gmail.com"
+                    className="text-titanium transition-colors hover:text-accent-ember"
+                  >
+                    stratalabs3d@gmail.com
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-xs uppercase tracking-[0.2em] text-steel">
+                  Phone
+                </dt>
+                <dd className="mt-1">
+                  <a
+                    href="tel:+19804022520"
+                    className="text-titanium transition-colors hover:text-accent-ember"
+                  >
+                    980 402 2520
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-xs uppercase tracking-[0.2em] text-steel">
+                  Website
+                </dt>
+                <dd className="mt-1">
+                  <a
+                    href="https://stratalabs3d.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-titanium transition-colors hover:text-accent-ember"
+                  >
+                    stratalabs3d.com
+                  </a>
+                </dd>
               </div>
               <div>
                 <dt className="text-xs uppercase tracking-[0.2em] text-steel">

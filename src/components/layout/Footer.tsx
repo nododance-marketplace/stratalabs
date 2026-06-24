@@ -28,6 +28,34 @@ export function Footer() {
               SLM, SLS, and large-format FDM machines most businesses can&apos;t
               get locally — built layer by layer, just like the future.
             </p>
+            <ul className="mt-5 space-y-2 text-sm">
+              <li>
+                <a
+                  href="mailto:stratalabs3d@gmail.com"
+                  className="text-titanium transition-colors hover:text-accent-ember"
+                >
+                  stratalabs3d@gmail.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+19804022520"
+                  className="text-titanium transition-colors hover:text-accent-ember"
+                >
+                  980 402 2520
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://stratalabs3d.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-titanium transition-colors hover:text-accent-ember"
+                >
+                  stratalabs3d.com
+                </a>
+              </li>
+            </ul>
           </div>
 
           <div>

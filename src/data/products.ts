@@ -120,6 +120,7 @@ export const products: Product[] = [
     ],
     images: ["/products/sl-3dmpdesk.png"],
     datasheet: "/docs/sl-3dmpdesk.pdf",
+    quotePdf: "/quotes/sl-3dmpdesk-quote.pdf",
     featured: true,
   },
   {
@@ -171,6 +172,7 @@ export const products: Product[] = [
       { label: "Production Capacity", value: "2000 pcs/year" },
     ],
     images: ["/products/sl-3dmp140.png"],
+    quotePdf: "/quotes/sl-3dmp140-quote.pdf",
   },
   {
     slug: "sl-3dmp220",
@@ -223,6 +225,7 @@ export const products: Product[] = [
       { label: "Software", value: "Strata slicing & control suite" },
     ],
     images: ["/products/sl-3dmp220.png"],
+    quotePdf: "/quotes/sl-3dmp220-quote.pdf",
     featured: true,
   },
   {
@@ -259,6 +262,7 @@ export const products: Product[] = [
       { label: "Production Capacity", value: "2000 pcs/year" },
     ],
     images: ["/products/sl-3dmp300.png"],
+    quotePdf: "/quotes/sl-3dmp300-quote.pdf",
     featured: true,
   },
   {
@@ -299,6 +303,7 @@ export const products: Product[] = [
       { label: "Production Capacity", value: "2000 pcs/year" },
     ],
     images: ["/products/sl-3dmp420.png"],
+    quotePdf: "/quotes/sl-3dmp420-quote.pdf",
     featured: true,
   },
   {
