@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProductBySlug, products, CATEGORY_META, formatPrice } from "@/data/products";
+import { getAccessoryConfig } from "@/data/accessories";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { CategoryBadge } from "@/components/product/CategoryBadge";
+import { AccessoryConfigurator } from "@/components/product/AccessoryConfigurator";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import {
   ArrowRightIcon,
@@ -43,6 +45,9 @@ export default function ProductDetailPage({ params }: PageProps) {
     )
     .slice(0, 3);
 
+  const accessoryConfig = getAccessoryConfig(product.slug);
+  const isBuyable = product.priceCents != null && !product.inquiryOnly;
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       {/* Breadcrumb */}
@@ -74,7 +79,13 @@ export default function ProductDetailPage({ params }: PageProps) {
             {product.description}
           </p>
 
-          {product.priceCents != null && !product.inquiryOnly ? (
+          {accessoryConfig && accessoryConfig.mode !== "tbd" ? (
+            <AccessoryConfigurator
+              product={product}
+              config={accessoryConfig}
+              buyable={isBuyable}
+            />
+          ) : product.priceCents != null && !product.inquiryOnly ? (
             <>
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <span className="font-heading text-2xl text-white">

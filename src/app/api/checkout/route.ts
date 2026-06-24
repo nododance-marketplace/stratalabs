@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { getProductBySlug } from "@/data/products";
+import { findAccessory } from "@/data/accessories";
 
 export const runtime = "nodejs";
 
@@ -44,7 +45,8 @@ export async function POST(req: Request) {
 
   const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
   for (const item of rawItems) {
-    const product = getProductBySlug(String(item?.slug ?? ""));
+    const slug = String(item?.slug ?? "");
+    const product = getProductBySlug(slug);
     if (!product || product.priceCents == null) continue; // skip quote-only items
     const quantity = Math.max(1, Math.min(99, Number(item?.quantity) || 1));
     line_items.push({
@@ -64,6 +66,26 @@ export async function POST(req: Request) {
         },
       },
     });
+
+    // Selected accessories — re-priced server-side from accessories.ts by id
+    // so the browser can never set its own accessory prices.
+    const accessoryIds: string[] = Array.isArray(item?.accessoryIds)
+      ? item.accessoryIds.map(String)
+      : [];
+    for (const id of accessoryIds) {
+      const accessory = findAccessory(slug, id);
+      if (!accessory) continue;
+      line_items.push({
+        quantity,
+        price_data: {
+          currency: "usd",
+          unit_amount: accessory.priceCents,
+          product_data: {
+            name: `${product.name} — ${accessory.name}`,
+          },
+        },
+      });
+    }
   }
 
   if (line_items.length === 0) {

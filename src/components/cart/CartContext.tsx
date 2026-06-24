@@ -19,12 +19,20 @@ import type { Product } from "@/lib/types";
 //  into a Stripe Checkout Session (see CartDrawer's "Request Quote" button).
 // ─────────────────────────────────────────────────────────────────────────
 
+export interface CartAccessory {
+  id: string;
+  name: string;
+  priceCents: number;
+}
+
 export interface CartItem {
   slug: string;
   name: string;
   category: string;
   priceCents: number | null;
   quantity: number;
+  /** Selected add-on accessories for this configured machine. */
+  accessories?: CartAccessory[];
 }
 
 interface CartState {
@@ -32,7 +40,7 @@ interface CartState {
 }
 
 type CartAction =
-  | { type: "ADD"; product: Product }
+  | { type: "ADD"; product: Product; accessories?: CartAccessory[] }
   | { type: "REMOVE"; slug: string }
   | { type: "SET_QTY"; slug: string; quantity: number }
   | { type: "CLEAR" }
@@ -45,10 +53,15 @@ function cartReducer(state: CartState, action: CartAction): CartState {
     case "ADD": {
       const existing = state.items.find((i) => i.slug === action.product.slug);
       if (existing) {
+        // Re-adding bumps quantity; the latest accessory selection wins.
         return {
           items: state.items.map((i) =>
             i.slug === action.product.slug
-              ? { ...i, quantity: i.quantity + 1 }
+              ? {
+                  ...i,
+                  quantity: i.quantity + 1,
+                  accessories: action.accessories ?? i.accessories,
+                }
               : i,
           ),
         };
@@ -62,6 +75,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
             category: action.product.category,
             priceCents: action.product.priceCents,
             quantity: 1,
+            accessories: action.accessories,
           },
         ],
       };
@@ -94,7 +108,7 @@ interface CartContextValue {
   subtotalCents: number;
   /** True if any item has no online price (must be quoted, not checked out). */
   hasQuoteOnly: boolean;
-  add: (product: Product) => void;
+  add: (product: Product, accessories?: CartAccessory[]) => void;
   remove: (slug: string) => void;
   setQty: (slug: string, quantity: number) => void;
   clear: () => void;
@@ -127,7 +141,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   }, [state.items]);
 
-  const add = useCallback((product: Product) => dispatch({ type: "ADD", product }), []);
+  const add = useCallback(
+    (product: Product, accessories?: CartAccessory[]) =>
+      dispatch({ type: "ADD", product, accessories }),
+    [],
+  );
   const remove = useCallback((slug: string) => dispatch({ type: "REMOVE", slug }), []);
   const setQty = useCallback(
     (slug: string, quantity: number) => dispatch({ type: "SET_QTY", slug, quantity }),
@@ -137,10 +155,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<CartContextValue>(() => {
     const count = state.items.reduce((sum, i) => sum + i.quantity, 0);
-    const subtotalCents = state.items.reduce(
-      (sum, i) => sum + (i.priceCents ?? 0) * i.quantity,
-      0,
-    );
+    const subtotalCents = state.items.reduce((sum, i) => {
+      const accessoriesCents =
+        i.accessories?.reduce((s, a) => s + a.priceCents, 0) ?? 0;
+      return sum + ((i.priceCents ?? 0) + accessoriesCents) * i.quantity;
+    }, 0);
     const hasQuoteOnly = state.items.some((i) => i.priceCents == null);
     return {
       items: state.items,

@@ -42,7 +42,11 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          items: items.map((i) => ({ slug: i.slug, quantity: i.quantity })),
+          items: items.map((i) => ({
+            slug: i.slug,
+            quantity: i.quantity,
+            accessoryIds: (i.accessories ?? []).map((a) => a.id),
+          })),
         }),
       });
       const data = await res.json();
@@ -127,6 +131,21 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
                     <p className="mt-1 text-xs text-steel">
                       {formatPrice(item.priceCents)}
                     </p>
+                    {item.accessories && item.accessories.length > 0 && (
+                      <ul className="mt-2 space-y-1 border-l border-white/10 pl-3">
+                        {item.accessories.map((a) => (
+                          <li
+                            key={a.id}
+                            className="flex justify-between gap-2 text-[11px] text-steel"
+                          >
+                            <span>+ {a.name}</span>
+                            <span className="whitespace-nowrap">
+                              {formatPrice(a.priceCents)}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                   <div className="flex flex-col items-end justify-between">
                     <button
