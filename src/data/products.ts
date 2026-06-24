@@ -349,7 +349,7 @@ export const products: Product[] = [
     name: "SL Intraoral Scanner",
     category: "Dental",
     specLine: "8µm accuracy · open system · STL/PLY/OBJ · autoclavable tips",
-    priceCents: 500_000, // $5,000
+    priceCents: 470_000, // $4,700
     description:
       "A high-technology intraoral scanner that turns a chairside scan into a precise 3D model in seconds — the perfect front end for in-house dental printing. Capture accurate digital impressions at 8µm single-crown accuracy, skip the messy trays, and send print-ready STL/PLY/OBJ files straight to your SLM dental printer. It’s an open system (no license fees), with autoclavable tips, built-in anti-fog heating, and AI tools for model building, occlusion and undercut analysis, and smile simulation. Lightweight (≤240g) and fast, it pairs perfectly with our dental metal printers to take you from scan to finished crown — all under one roof.",
     highlights: [
