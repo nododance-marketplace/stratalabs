@@ -129,7 +129,13 @@
       "Bash(echo \"shop still lists Consultation? \\(should be empty\\): $\\(curl -s --max-time 60 http://localhost:3030/shop)",
       "Bash(curl -s --max-time 60 http://localhost:3030/products/sl-3dmp140)",
       "WebSearch",
-      "WebFetch(domain:www.3dfastform.com)"
+      "WebFetch(domain:www.3dfastform.com)",
+      "Bash(curl -s --max-time 60 -o /dev/null -w '%{http_code}' http://localhost:3030/products/sl-3dmp800)",
+      "Bash(echo \"800 page: $\\(curl -s --max-time 60 -o /dev/null -w '%{http_code}' http://localhost:3030/products/sl-3dmp800\\)\")",
+      "Bash(curl -s --max-time 60 http://localhost:3030/products/sl-3dmp800)",
+      "Bash(curl -s --max-time 30 -o /dev/null -w '%{http_code}' http://localhost:3030/products/sl-3dmp800.png)",
+      "Bash(echo \"image: $\\(curl -s --max-time 30 -o /dev/null -w '%{http_code}' http://localhost:3030/products/sl-3dmp800.png\\)\")",
+      "Bash(echo \"on shop: $\\(curl -s --max-time 40 http://localhost:3030/shop)"
     ],
     "additionalDirectories": [
       "d:\\Downloads\\Strata Labs\\Videos",

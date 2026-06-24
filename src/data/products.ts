@@ -177,7 +177,8 @@ export const products: Product[] = [
     name: "SL 3DMP220",
     category: "Dental",
     specLine: "220 × 140 × 100 mm · dual 500 W lasers · 300 crowns/run",
-    priceCents: null, // Awaiting vendor price + markup. Set cents to enable checkout (e.g. 14_500_000 = $145,000).
+    priceCents: 8_700_000, // $87,000
+    inquiryOnly: true,
     description:
       "A dual-laser SLM metal printer with a large build volume — print up to 300 crowns or 30 frameworks in a single run. Permanent filter, LFPT efficiency tech, and free-forever in-house software.",
     highlights: [
@@ -229,7 +230,8 @@ export const products: Product[] = [
     name: "SL 3DMP300",
     category: "Industrial",
     specLine: "Large-format SLM · steel, nickel, titanium & aluminum alloys",
-    priceCents: null, // Awaiting vendor price + markup. Set cents to enable checkout (e.g. 21_900_000 = $219,000).
+    priceCents: 18_700_000, // $187,000
+    inquiryOnly: true,
     description:
       "A large-format SLM metal printer for industrial molds, tooling and high-volume dental work. Bidirectional powder spreading and one-click typesetting for fast, stable mass production.",
     highlights: [
@@ -264,7 +266,8 @@ export const products: Product[] = [
     name: "SL 3DMP420",
     category: "Industrial",
     specLine: "Super-large multi-laser SLM · powder circulation system",
-    priceCents: null, // Awaiting vendor price + markup. Set cents to enable checkout (e.g. 31_900_000 = $319,000).
+    priceCents: 29_700_000, // $297,000
+    inquiryOnly: true,
     description:
       "The flagship super-large-format multi-laser SLM metal printer, built for serious mass production with a powder circulation system for high-volume runs.",
     highlights: [
@@ -303,7 +306,8 @@ export const products: Product[] = [
     name: "SL 3DMP800",
     category: "Industrial",
     specLine: "Super-large multi-laser SLM · 4 lasers · industrial mass production",
-    priceCents: null, // Flagship — quoted per project. Talk to Sales.
+    priceCents: 130_000_000, // $1,300,000 — exceeds Stripe's max charge; inquiry-only by necessity
+    inquiryOnly: true,
     description:
       "Our most industrial machine. The SL 3DMP800 is a super-large-format, multi-laser SLM system built for serious production — four lasers paired with a dual vibrating-mirror system, bidirectional variable-speed powder feeding, and Z-axis closed-loop control all working together to melt large metal parts fast and repeatably. Print across stainless steel, tool steel, nickel, aluminum, and titanium alloys at a layer resolution down to 150 µm and precision under 100 µm. When your throughput outgrows everything else in the lineup, this is the floor-standing workhorse that keeps up — backed by US-based support from install onward.",
     highlights: [
